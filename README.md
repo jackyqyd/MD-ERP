@@ -5,7 +5,7 @@
 ## 项目环境
 <p>
   <h4>IDE</h4>
-  Visual Studio 2022 Professional 版本为17.4.4
+  Visual Studio 2022 Professional 版本为17.5.0
   <h4>.NET Core SDK</h4>
   版本为 SDK 6
   <h4>其他</h4>
