@@ -49,4 +49,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="U_Id" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="bc4c2ffe-70db-4630-bcf2-39c10b3f1df6" ChangeDateTime="02/23/2023 15:09:37">
+    <Property Name="ElementName" Value="[dbo].[Sys_Menus].[D_CreateDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sys_Menus]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="M_CreateDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b051b37e-12a1-4cd1-8201-83f75f5d77cd" ChangeDateTime="02/23/2023 15:09:40">
+    <Property Name="ElementName" Value="[dbo].[Sys_Menus].[D_IsEnabled]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sys_Menus]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="M_IsEnabled" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="deb85326-e1fe-481d-97df-df1ac1fa60b9" ChangeDateTime="02/23/2023 15:09:42">
+    <Property Name="ElementName" Value="[dbo].[Sys_Menus].[D_IsDel]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sys_Menus]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="M_IsDel" />
+  </Operation>
 </Operations>

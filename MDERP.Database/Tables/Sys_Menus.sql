@@ -6,7 +6,7 @@
     [M_MenuName] NVARCHAR(50) NOT NULL, 
     [M_MenuRemark] NVARCHAR(50) NULL, 
     [M_MenuOrder] INT NOT NULL, 
-    [D_CreateDate] DATETIME NOT NULL, 
-    [D_IsEnabled] BIT NOT NULL, 
-    [D_IsDel] BIT NOT NULL
+    [M_CreateDate] DATETIME NOT NULL, 
+    [M_IsEnabled] BIT NOT NULL, 
+    [M_IsDel] BIT NOT NULL
 )
