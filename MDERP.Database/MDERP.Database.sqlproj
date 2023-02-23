@@ -66,6 +66,13 @@
     <Folder Include="Tables\Sys_Department" />
     <Folder Include="Tables\Sys_Department\Indexes" />
     <Folder Include="Tables\Sys_Department\Foreign Keys" />
+    <Folder Include="Tables\Sys_EmployeeInfo" />
+    <Folder Include="Tables\Sys_EmployeeInfo\Indexes" />
+    <Folder Include="Tables\Sys_EmployeeInfo\Foreign Keys" />
+    <Folder Include="Tables\Sys_Menus" />
+    <Folder Include="Tables\Sys_Menus\Indexes" />
+    <Folder Include="Tables\Sys_Users" />
+    <Folder Include="Tables\Sys_Users\Indexes" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Sys_Dictionary.sql" />
@@ -77,6 +84,16 @@
     <Build Include="Tables\Sys_Department.sql" />
     <Build Include="Tables\Sys_Department\Indexes\PK_SysDepartment.sql" />
     <Build Include="Tables\Sys_Department\Foreign Keys\FK_SysDepartment_SysCompany.sql" />
+    <Build Include="Tables\Sys_EmployeeInfo.sql" />
+    <Build Include="Tables\Sys_EmployeeInfo\Indexes\PK_SysEmployeeInfo.sql" />
+    <Build Include="Tables\Sys_EmployeeInfo\Foreign Keys\FK_SysEmployeeInfo-Continent_SysAreaInfo.sql" />
+    <Build Include="Tables\Sys_EmployeeInfo\Foreign Keys\FK_SysEmployeeInfo-Country_SysAreaInfo.sql" />
+    <Build Include="Tables\Sys_EmployeeInfo\Foreign Keys\FK_SysEmployeeInfo-StateProvince_SysAreaInfo.sql" />
+    <Build Include="Tables\Sys_EmployeeInfo\Foreign Keys\FK_SysEmployeeInfo-City_SysAreaInfo.sql" />
+    <Build Include="Tables\Sys_Menus.sql" />
+    <Build Include="Tables\Sys_Menus\Indexes\PK_SysMenus.sql" />
+    <Build Include="Tables\Sys_Users.sql" />
+    <Build Include="Tables\Sys_Users\Indexes\PK_SysUsers.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="MDERP.Database.refactorlog" />
