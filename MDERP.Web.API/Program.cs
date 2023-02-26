@@ -2,9 +2,10 @@ using Microsoft.OpenApi.Models;
 using NLog.Extensions.Logging;
 using NLog.Web;
 using NLog;
-using SqlSugar;
-using System.Configuration;
 using MDERP.Web.API.Db;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using MDERP.Business.Extensions.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,7 @@ builder.Host.UseNLog();
 #endregion
 builder.Services.AddControllers();
 builder.Services.AddSqlsugarSetup(builder.Configuration);
+
 #region Swagger
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -49,6 +51,10 @@ builder.Services.AddSwaggerGen(c =>
 });
 #endregion
 
+#region Autofac
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacModuleRegister()));
+#endregion
 
 var app = builder.Build();
 #region cors

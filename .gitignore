@@ -18,3 +18,9 @@
 /MDERP.Business.IRepository/obj
 /MDERP.Business.Models/bin/Debug/net6.0
 /MDERP.Business.Models/obj
+/MDERP.Business.Extensions/obj
+/MDERP.Business.IService/obj
+/MDERP.Business.Repository/obj
+/MDERP.Common/obj
+/MDERP.Business.Service/bin/Debug/net6.0
+/MDERP.Business.Service/obj
