@@ -14,3 +14,7 @@
 /MDERP.Web.API/.vs/MDERP.Web.API
 /MDERP.Database/.vs/MDERP.Database/FileContentIndex
 /MDERP.Web.API/bin/Debug/net6.0
+/MDERP.Business.IRepository/bin/Debug/net6.0
+/MDERP.Business.IRepository/obj
+/MDERP.Business.Models/bin/Debug/net6.0
+/MDERP.Business.Models/obj

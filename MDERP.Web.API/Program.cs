@@ -2,6 +2,9 @@ using Microsoft.OpenApi.Models;
 using NLog.Extensions.Logging;
 using NLog.Web;
 using NLog;
+using SqlSugar;
+using System.Configuration;
+using MDERP.Web.API.Db;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,7 @@ var logger = NLog.Web.NLogBuilder.ConfigureNLog(LogManager.Configuration).GetCur
 builder.Host.UseNLog();
 #endregion
 builder.Services.AddControllers();
+builder.Services.AddSqlsugarSetup(builder.Configuration);
 #region Swagger
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
