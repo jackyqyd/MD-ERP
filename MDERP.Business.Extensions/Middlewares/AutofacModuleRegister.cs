@@ -12,7 +12,7 @@ namespace MDERP.Business.Extensions.Middlewares
 
             #region 带有接口层的服务注入
 
-            var servicesDllFile = Path.Combine(basePath, "MDERP.Business.Services.dll");
+            var servicesDllFile = Path.Combine(basePath, "MDERP.Business.Service.dll");
             var repositoryDllFile = Path.Combine(basePath, "MDERP.Business.Repository.dll");
 
             // 获取 Service.dll 程序集服务，并注册

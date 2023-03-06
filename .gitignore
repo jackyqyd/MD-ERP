@@ -24,3 +24,7 @@
 /MDERP.Common/obj
 /MDERP.Business.Service/bin/Debug/net6.0
 /MDERP.Business.Service/obj
+/MDERP.Business.Extensions/bin/Debug/net6.0
+/MDERP.Common/bin/Debug/net6.0
+/MDERP.Business.Repository/bin/Debug/net6.0
+/MDERP.Business.IService/bin/Debug/net6.0

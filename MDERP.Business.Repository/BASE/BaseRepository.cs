@@ -20,7 +20,6 @@ namespace MDERP.Business.Repository.BASE
 
         public async Task<TEntity> QueryById(object objId)
         {
-            //return await Task.Run(() => _db.Queryable<TEntity>().InSingle(objId));
             return await MyDb.Queryable<TEntity>().In(objId).SingleAsync();
         }
         /// <summary>
@@ -51,13 +50,10 @@ namespace MDERP.Business.Repository.BASE
         /// <summary>
         /// 写入实体数据
         /// </summary>
-        /// <param name="entity">博文实体类</param>
+        /// <param name="entity">实体类</param>
         /// <returns></returns>
         public async Task<int> Add(TEntity entity)
         {
-            //http://www.codeisbug.com/Doc/8/1130
-            //插入并返回受影响行数用ExecuteCommand
-            //var t2 = db.Insertable(insertObj).ExecuteCommand();
             return await MyDb.Insertable(entity).ExecuteCommandAsync();
         }
 
@@ -94,26 +90,20 @@ namespace MDERP.Business.Repository.BASE
         /// <summary>
         /// 更新实体数据
         /// </summary>
-        /// <param name="entity">博文实体类</param>
+        /// <param name="entity">实体类</param>
         /// <returns></returns>
         public async Task<bool> Update(TEntity entity)
         {
-            ////这种方式会以主键为条件
-            //var i = await Task.Run(() => _db.Updateable(entity).ExecuteCommand());
-            //return i > 0;
-            //这种方式会以主键为条件
             return await MyDb.Updateable(entity).ExecuteCommandHasChangeAsync();
         }
 
         public async Task<bool> Update(TEntity entity, string strWhere)
         {
-            //return await Task.Run(() => _db.Updateable(entity).Where(strWhere).ExecuteCommand() > 0);
             return await MyDb.Updateable(entity).Where(strWhere).ExecuteCommandHasChangeAsync();
         }
 
         public async Task<bool> Update(string strSql, SugarParameter[] parameters = null)
         {
-            //return await Task.Run(() => _db.Ado.ExecuteCommand(strSql, parameters) > 0);
             return await MyDb.Ado.ExecuteCommandAsync(strSql, parameters) > 0;
         }
 
@@ -129,20 +119,6 @@ namespace MDERP.Business.Repository.BASE
           string strWhere = ""
             )
         {
-            //IUpdateable<TEntity> up = await Task.Run(() => _db.Updateable(entity));
-            //if (lstIgnoreColumns != null && lstIgnoreColumns.Count > 0)
-            //{
-            //    up = await Task.Run(() => up.IgnoreColumns(it => lstIgnoreColumns.Contains(it)));
-            //}
-            //if (lstColumns != null && lstColumns.Count > 0)
-            //{
-            //    up = await Task.Run(() => up.UpdateColumns(it => lstColumns.Contains(it)));
-            //}
-            //if (!string.IsNullOrEmpty(strWhere))
-            //{
-            //    up = await Task.Run(() => up.Where(strWhere));
-            //}
-            //return await Task.Run(() => up.ExecuteCommand()) > 0;
 
             IUpdateable<TEntity> up = MyDb.Updateable(entity);
             if (lstIgnoreColumns != null && lstIgnoreColumns.Count > 0)
@@ -163,7 +139,7 @@ namespace MDERP.Business.Repository.BASE
         /// <summary>
         /// 根据实体删除一条数据
         /// </summary>
-        /// <param name="entity">博文实体类</param>
+        /// <param name="entity">实体类</param>
         /// <returns></returns>
         public async Task<bool> Delete(TEntity entity)
         {

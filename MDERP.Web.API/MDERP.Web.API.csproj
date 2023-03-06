@@ -18,6 +18,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MDERP.Business.Extensions\MDERP.Business.Extensions.csproj" />
+    <ProjectReference Include="..\MDERP.Business.IService\MDERP.Business.IService.csproj" />
+    <ProjectReference Include="..\MDERP.Business.Models\MDERP.Business.Models.csproj" />
+    <ProjectReference Include="..\MDERP.Business.Service\MDERP.Business.Service.csproj" />
+    <ProjectReference Include="..\MDERP.Common\MDERP.Common.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MDERP.Business.Models\MDERP.Business.Models.csproj" />
+  </ItemGroup>
+
 </Project>
