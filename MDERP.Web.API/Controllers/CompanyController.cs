@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MDERP.Business.IService;
+﻿using MDERP.Business.IService;
 using MDERP.Common.Helper;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using MDERP.Business.Models.Entities;
 using MDERP.Business.Models.ViewModels;
@@ -26,7 +23,7 @@ namespace MDERP.Web.API.Controllers
         }
 
         [HttpGet("{companyid}")]
-        public async Task<JsonResult> GetNoticeInfo(string companyid)
+        public async Task<JsonResult> GetCompanyInfo(string companyid)
         {
             ApiResult result = new ApiResult();
 
@@ -40,8 +37,7 @@ namespace MDERP.Web.API.Controllers
                 }
                 else
                 {
-                    int cid = int.Parse(companyid);
-                    var companyinfo = await _companyService.GetModelById(cid);
+                    var companyinfo = await _companyService.GetModelById(companyid);
                     result.Data = companyinfo;
                     result.Success = true;
                     result.Msg = "获取成功";
@@ -63,7 +59,7 @@ namespace MDERP.Web.API.Controllers
             ApiResult result = new ApiResult();
             try
             {
-                if (((JObject)jsonText).Count==0)
+                if (string.IsNullOrEmpty(jsonText.ToString()))
                 {
                     result.Success = false;
                     result.Msg = "参数不能为空";
@@ -71,14 +67,13 @@ namespace MDERP.Web.API.Controllers
                 }
                 else
                 {
-                    JObject jObject = StringHelper.JsonTextFormat((JObject)jsonText.ToString());
-                    Sys_CompanyVM tempCompanyVM =jObject.ToObject<Sys_CompanyVM>()!;
+                    Sys_CompanyVM tempCompanyVM = JsonConvert.DeserializeObject<Sys_CompanyVM>(jsonText.ToString()!)!;
                     Sys_Company tempCompanyEnt = EntityHelper.MapTo<Sys_Company, Sys_CompanyVM>(tempCompanyVM);
                     string companyId = tempCompanyEnt.C_Id;
                     bool isNew = false;
                     DateTime dt = DateTime.Now;
                     var expression = Extention.True<Sys_Company>();
-                    expression = expression.And(x => x.Equals(tempCompanyVM.C_Name));
+                    expression = expression.And(x => x.C_Name.Equals(tempCompanyVM.C_Name));
                     var tempEnt = await _companyService.GetModelByExpression(expression);
                     if (tempEnt != null)
                     {

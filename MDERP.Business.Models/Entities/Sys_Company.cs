@@ -16,7 +16,7 @@ namespace MDERP.Business.Models.Entities
            /// Default:
            /// Nullable:False
            /// </summary>           
-           [SugarColumn(IsPrimaryKey=true,IsIdentity=true)]
+           [SugarColumn(IsPrimaryKey=true)]
            public string C_Id {get;set;}
 
            /// <summary>
