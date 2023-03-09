@@ -11,17 +11,13 @@ namespace MDERP.Business.Models.Entities
     [SugarTable("Sys_Company")]
     public partial class Sys_Company
     {
-           public Sys_Company(){
-
-
-           }
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
            [SugarColumn(IsPrimaryKey=true,IsIdentity=true)]
-           public long C_Id {get;set;}
+           public string C_Id {get;set;}
 
            /// <summary>
            /// Desc:
@@ -42,14 +38,14 @@ namespace MDERP.Business.Models.Entities
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public long C_ParentId {get;set;}
+           public string C_ParentId {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public bool C_IsSubCompany {get;set;}
+           public int C_IsSubCompany {get;set;}
 
            /// <summary>
            /// Desc:
@@ -70,7 +66,7 @@ namespace MDERP.Business.Models.Entities
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public bool C_IsDel {get;set;}
+           public int C_IsDel {get;set;}
 
     }
 }

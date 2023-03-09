@@ -32,7 +32,7 @@ namespace MDERP.Business.Service
             return await companyRep.Delete(sys_Company);
         }
 
-        public async Task<Sys_Company> GetModelById(int id)
+        public async Task<Sys_Company> GetModelById(object id)
         {
             return await companyRep.QueryById(id);
         }
@@ -45,6 +45,12 @@ namespace MDERP.Business.Service
         public async Task<bool> UpdateCompany(Sys_Company sys_Company)
         {
             return await companyRep.Update(sys_Company);
+        }
+
+        public async Task<Sys_Company> GetModelByExpression(Expression<Func<Sys_Company, bool>> whereExpression)
+        {
+            var companyList = await companyRep.Query(whereExpression);
+            return companyList.FirstOrDefault();
         }
     }
 }

@@ -11,7 +11,9 @@ namespace MDERP.Business.IService
 {
     public interface ICompanyService
     {
-        Task<Sys_Company> GetModelById(int id);
+        Task<Sys_Company> GetModelById(object id);
+
+        Task<Sys_Company> GetModelByExpression(Expression<Func<Sys_Company, bool>> whereExpression);
         
         Task<PageModel<Sys_Company>> GetPageModel(Expression<Func<Sys_Company, bool>> whereExpression, int intPageIndex = 1, int intPageSize = 20, string strOrderByFileds = null);
 
