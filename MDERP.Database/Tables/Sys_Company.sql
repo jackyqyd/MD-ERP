@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Sys_Company]
 (
-	[C_Id] NVARCHAR(32) NOT NULL IDENTITY(1,1), 
+	[C_Id] NVARCHAR(32) NOT NULL, 
     [C_Name] NVARCHAR(200) NOT NULL, 
     [C_Description] NVARCHAR(200) NOT NULL, 
     [C_ParentId] NVARCHAR(32) NOT NULL, 
