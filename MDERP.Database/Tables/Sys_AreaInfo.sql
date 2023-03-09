@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Sys_AreaInfo]
 (
-	[A_Id] BIGINT NOT NULL IDENTITY(1,1), 
-    [A_ParentId] BIGINT NOT NULL, 
+	[A_Id] NVARCHAR(32) NOT NULL, 
+    [A_ParentId] NVARCHAR(32) NOT NULL, 
     [A_Path] NVARCHAR(10) NOT NULL, 
     [A_Level] INT NOT NULL, 
     [A_CnName] NVARCHAR(50) NOT NULL, 
