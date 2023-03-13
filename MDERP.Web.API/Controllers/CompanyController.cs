@@ -141,10 +141,15 @@ namespace MDERP.Web.API.Controllers
                 }
                 else
                 {
-                    //TODO 判断公司/集团下是否还存在子公司以及是否包含部门
                     var companyInfo = await _companyService.GetModelById(companyid);
                     if (companyInfo != null)
                     {
+                        if (companyInfo.C_ParentId != "0")
+                        {
+                            result.Success = false;
+                            result.Msg = "该公司/集团下存在子公司，无法删除！";
+                            return new JsonResult(result);
+                        }
                         bool deleteResult = await _companyService.DeleteCompany(companyInfo);
                         if (deleteResult)
                         {
@@ -180,7 +185,7 @@ namespace MDERP.Web.API.Controllers
             ApiResult result = new ApiResult();
             try
             {
-                if (((JObject)jsonText).Count == 0)
+                if (string.IsNullOrEmpty(jsonText.ToString()))
                 {
                     result.Success = true;
                     result.Msg = "参数不能为空";
@@ -188,8 +193,7 @@ namespace MDERP.Web.API.Controllers
                 }
                 else
                 {
-                    JObject jObject = StringHelper.JsonTextFormat((JObject)jsonText);
-                    PageModel<Sys_CompanyVM> pageModel=jObject.ToObject<PageModel<Sys_CompanyVM>>()!;
+                    PageModel<Sys_CompanyVM> pageModel = JsonConvert.DeserializeObject<PageModel<Sys_CompanyVM>>(jsonText.ToString()!)!;
                     var expression = Extention.True<Sys_Company>();
                     List<Sys_CompanyVM> list = new List<Sys_CompanyVM>();
                     if (!string.IsNullOrEmpty(pageModel.QueryCriteria.C_Name) && !string.IsNullOrWhiteSpace(pageModel.QueryCriteria.C_Name))
