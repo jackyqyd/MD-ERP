@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MDERP.Database", "MDERP.Database.sqlproj", "{A1D31681-7BBF-49FB-90CD-035BC5688AC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1D31681-7BBF-49FB-90CD-035BC5688AC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1D31681-7BBF-49FB-90CD-035BC5688AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1D31681-7BBF-49FB-90CD-035BC5688AC2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A1D31681-7BBF-49FB-90CD-035BC5688AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1D31681-7BBF-49FB-90CD-035BC5688AC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1D31681-7BBF-49FB-90CD-035BC5688AC2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54167910-1885-45D4-A7A4-E5E7CFAAD8AD}
+	EndGlobalSection
+EndGlobal

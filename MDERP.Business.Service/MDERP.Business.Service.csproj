@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MDERP.Business.IRepository\MDERP.Business.IRepository.csproj" />
+    <ProjectReference Include="..\MDERP.Business.IService\MDERP.Business.IService.csproj" />
+    <ProjectReference Include="..\MDERP.Business.Repository\MDERP.Business.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
