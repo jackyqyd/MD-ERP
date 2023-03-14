@@ -11,7 +11,7 @@ namespace MDERP.Business.IService
 {
     public interface IDepartmentService
     {
-        Task<Sys_Department> GetModelById(int deptID);
+        Task<Sys_Department> GetModelById(object deptID);
 
         Task<Sys_Department> GetModelByExpress(Expression<Func<Sys_Department, bool>> whereExpression);
 

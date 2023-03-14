@@ -40,7 +40,7 @@ namespace MDERP.Business.Service
             return departmentList.FirstOrDefault();
         }
 
-        public async Task<Sys_Department> GetModelById(int deptID)
+        public async Task<Sys_Department> GetModelById(object deptID)
         {
             return await departmentRep.QueryById(deptID);
         }
