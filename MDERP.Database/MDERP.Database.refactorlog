@@ -70,4 +70,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="M_IsDel" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="6613ebc6-a82a-4abe-9cc1-47f7164067a5" ChangeDateTime="04/06/2023 02:34:18">
+    <Property Name="ElementName" Value="[dbo].[Sys_EmployeeInfo].[E_FirstName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sys_EmployeeInfo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="E_Name" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f423e617-3798-41dd-a730-eb115d19d737" ChangeDateTime="04/07/2023 00:43:07">
+    <Property Name="ElementName" Value="[dbo].[Sys_EmployeeDepartmentRel].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sys_EmployeeDepartmentRel]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="R_Id" />
+  </Operation>
 </Operations>

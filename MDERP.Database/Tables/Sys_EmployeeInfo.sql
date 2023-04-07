@@ -1,9 +1,7 @@
 ﻿CREATE TABLE [dbo].[Sys_EmployeeInfo]
 (
 	[E_Id] NVARCHAR(32) NOT NULL, 
-    [E_FirstName] NVARCHAR(50) NOT NULL, 
-    [E_MiddleName] NVARCHAR(50) NOT NULL, 
-    [E_LastName] NVARCHAR(50) NOT NULL, 
+    [E_Name] NVARCHAR(50) NOT NULL, 
     [E_Gender] INT NOT NULL, 
     [E_Birthday] DATETIME NOT NULL, 
     [E_Continent] NVARCHAR(32) NOT NULL, 

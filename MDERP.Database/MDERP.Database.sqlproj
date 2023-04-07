@@ -73,6 +73,9 @@
     <Folder Include="Tables\Sys_Menus\Indexes" />
     <Folder Include="Tables\Sys_Users" />
     <Folder Include="Tables\Sys_Users\Indexes" />
+    <Folder Include="Tables\Sys_EmployeeDepartmentRel" />
+    <Folder Include="Tables\Sys_EmployeeDepartmentRel\Indexes" />
+    <Folder Include="Tables\Sys_EmployeeDepartmentRel\Foreign Keys" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Sys_Dictionary.sql" />
@@ -94,6 +97,10 @@
     <Build Include="Tables\Sys_Menus\Indexes\PK_SysMenus.sql" />
     <Build Include="Tables\Sys_Users.sql" />
     <Build Include="Tables\Sys_Users\Indexes\PK_SysUsers.sql" />
+    <Build Include="Tables\Sys_EmployeeDepartmentRel.sql" />
+    <Build Include="Tables\Sys_EmployeeDepartmentRel\Indexes\PK_SysEmployeeDepartmentRel.sql" />
+    <Build Include="Tables\Sys_EmployeeDepartmentRel\Foreign Keys\FK_SysEmployeeDepartmentRel-EId_SysEmployeeInfo.sql" />
+    <Build Include="Tables\Sys_EmployeeDepartmentRel\Foreign Keys\FK_SysEmployeeDepartmentRel-DId_SysDepartment.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="MDERP.Database.refactorlog" />
