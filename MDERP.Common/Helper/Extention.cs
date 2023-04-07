@@ -30,12 +30,21 @@ namespace MDERP.Common.Helper
             return Expression.Lambda<T>(body, parameters);
         }
         public static Expression<Func<T, bool>> True<T>() { return param => true; }
+        public static Expression<Func<T1, T2, T3, bool>> True<T1, T2, T3>() { return (T1, T2, T3) => true; }
         public static Expression<Func<T, bool>> False<T>() { return param => false; }
         public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> first, Expression<Func<T, bool>> second)
         {
             return first.Compose(second, Expression.AndAlso);
         }
         public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> first, Expression<Func<T, bool>> second)
+        {
+            return first.Compose(second, Expression.OrElse);
+        }
+        public static Expression<Func<T1, T2,T3, bool>> And<T1,T2,T3>(this Expression<Func<T1, T2, T3, bool>> first, Expression<Func<T1, T2, T3, bool>> second)
+        {
+            return first.Compose(second, Expression.AndAlso);
+        }
+        public static Expression<Func<T1, T2, T3, bool>> Or<T1, T2, T3>(this Expression<Func<T1, T2, T3, bool>> first, Expression<Func<T1, T2, T3, bool>> second)
         {
             return first.Compose(second, Expression.OrElse);
         }

@@ -20,36 +20,22 @@ namespace MDERP.Business.Models.Entities
            /// Default:
            /// Nullable:False
            /// </summary>           
-           [SugarColumn(IsPrimaryKey=true,IsIdentity=true)]
-           public long E_Id {get;set;}
+           [SugarColumn(IsPrimaryKey=true)]
+           public string E_Id {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public string E_FirstName {get;set;}
+           public string E_Name {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public string E_MiddleName {get;set;}
-
-           /// <summary>
-           /// Desc:
-           /// Default:
-           /// Nullable:False
-           /// </summary>           
-           public string E_LastName {get;set;}
-
-           /// <summary>
-           /// Desc:
-           /// Default:
-           /// Nullable:False
-           /// </summary>           
-           public bool E_Gender {get;set;}
+           public int E_Gender {get;set;}
 
            /// <summary>
            /// Desc:
@@ -58,33 +44,40 @@ namespace MDERP.Business.Models.Entities
            /// </summary>           
            public DateTime E_Birthday {get;set;}
 
-           /// <summary>
-           /// Desc:
-           /// Default:
-           /// Nullable:False
-           /// </summary>           
-           public long E_Continent {get;set;}
+            /// <summary>
+            /// Desc:
+            /// Default:
+            /// Nullable:False
+            /// </summary>
+            public string E_IDCard { get; set; }
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public long E_Country {get;set;}
+           public string E_Continent {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public long E_StateProvince {get;set;}
+           public string E_Country {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public long E_City {get;set;}
+           public string E_StateProvince {get;set;}
+
+           /// <summary>
+           /// Desc:
+           /// Default:
+           /// Nullable:False
+           /// </summary>           
+           public string E_City {get;set;}
 
            /// <summary>
            /// Desc:
@@ -98,14 +91,14 @@ namespace MDERP.Business.Models.Entities
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public bool E_IsMarried {get;set;}
+           public int E_IsMarried {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public long E_Education {get;set;}
+           public string E_Education {get;set;}
 
            /// <summary>
            /// Desc:
@@ -147,14 +140,14 @@ namespace MDERP.Business.Models.Entities
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public bool E_IsDel {get;set;}
+           public int E_IsDel {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public bool E_IsLock {get;set;}
+           public int E_IsLock {get;set;}
 
     }
 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MDERP.Business.IRepository;
 using MDERP.Business.IRepository.BASE;
+using MDERP.Business.IRepository.UnitOfWork;
 using MDERP.Business.Models;
 using MDERP.Common.Helper;
 using SqlSugar;
@@ -15,8 +16,28 @@ namespace MDERP.Business.Repository.BASE
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class, new()
     {
-        private ISqlSugarClient MyDb;
-        public BaseRepository(ISqlSugarClient _mydb) { MyDb = _mydb; }
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly ISqlSugarClient _dbBase;
+        private ISqlSugarClient MyDb
+        {
+            get 
+            {
+                //if (typeof(TEntity).GetTypeInfo().GetCustomAttributes(typeof(SugarTable), true).FirstOrDefault((x => x.GetType() == typeof(SugarTable))) is SugarTable sugarTable && !string.IsNullOrEmpty(sugarTable.TableDescription))
+                //{
+                //    _dbBase.ChangeDatabase(sugarTable.TableDescription.ToLower());
+                //}
+                //else
+                //{
+                //    _dbBase.ChangeDatabase(MainDb.CurrentDbConnId.ToLower());
+                //}
+                return _dbBase;
+            }
+        }
+        public BaseRepository(IUnitOfWork unitOfWork,ISqlSugarClient sqlSugarClient) 
+        {
+            _unitOfWork = unitOfWork;
+            _dbBase = sqlSugarClient;
+        }
 
         public async Task<TEntity> QueryById(object objId)
         {
@@ -430,7 +451,7 @@ namespace MDERP.Business.Repository.BASE
         /// <param name="whereLambda">查询表达式 (w1, w2) =>w1.UserNo == "")</param> 
         /// <returns>值</returns>
         public async Task<List<TResult>> QueryMuch<T, T2, T3, TResult>(
-            Expression<Func<T, T2, T3, object[]>> joinExpression,
+            Expression<Func<T, T2, T3, JoinQueryInfos>> joinExpression,
             Expression<Func<T, T2, T3, TResult>> selectExpression,
             Expression<Func<T, T2, T3, bool>> whereLambda = null) where T : class, new()
         {
@@ -442,7 +463,7 @@ namespace MDERP.Business.Repository.BASE
         }
 
         public async Task<PageModel<TResult>> QueryMuch<T, T2, T3, TResult>(
-            Expression<Func<T, T2, T3, object[]>> joinExpression,
+            Expression<Func<T, T2, T3, JoinQueryInfos>> joinExpression,
             Expression<Func<T, T2, T3, TResult>> selectExpression,
             Expression<Func<T, T2, T3, bool>> whereLambda = null,
            int intPageIndex = 1, int intPageSize = 20, string strOrderByFileds = null) where T : class, new()

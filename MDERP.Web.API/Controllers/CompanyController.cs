@@ -98,11 +98,11 @@ namespace MDERP.Web.API.Controllers
                         var processResult = false;
                         if (isNew)
                         {
-                            processResult = await _companyService.AddCompany(tempCompanyEnt) > 0;
+                            processResult = await _companyService.Add(tempCompanyEnt) > 0;
                         }
                         else
                         {
-                            processResult = await _companyService.UpdateCompany(tempCompanyEnt);
+                            processResult = await _companyService.Update(tempCompanyEnt);
                         }
                         if (processResult)
                         {
@@ -150,7 +150,7 @@ namespace MDERP.Web.API.Controllers
                             result.Msg = "该公司/集团下存在子公司，无法删除！";
                             return new JsonResult(result);
                         }
-                        bool deleteResult = await _companyService.DeleteCompany(companyInfo);
+                        bool deleteResult = await _companyService.Delete(companyInfo);
                         if (deleteResult)
                         {
                             result.Success = true;

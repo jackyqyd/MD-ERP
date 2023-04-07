@@ -1,4 +1,5 @@
-﻿using MDERP.Business.IService;
+﻿using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using MDERP.Business.IService;
 using MDERP.Business.Models;
 using MDERP.Business.Models.Entities;
 using MDERP.Business.Models.ViewModels;
@@ -15,11 +16,13 @@ namespace MDERP.Web.API.Controllers
     public class DepartmentController : ControllerBase
     {
         private readonly IDepartmentService _departmentService;
+        private readonly IEmployeeDepartmentRelService _employeeDepartmentRelService;
         private readonly ILogger<DepartmentController> _logger;
 
-        public DepartmentController(IDepartmentService departmentService, ILogger<DepartmentController> logger)
+        public DepartmentController(IDepartmentService departmentService, IEmployeeDepartmentRelService employeeDepartmentRelService, ILogger<DepartmentController> logger)
         {
             _departmentService = departmentService;
+            _employeeDepartmentRelService = employeeDepartmentRelService;
             _logger = logger;
         }
 
@@ -74,7 +77,7 @@ namespace MDERP.Web.API.Controllers
                     DateTime dt = DateTime.Now;
                     var expression = Extention.True<Sys_Department>();
                     expression = expression.And(x => x.D_DeptName.Equals(tempDepartmentVM.D_DeptName));
-                    var tempEnt = await _departmentService.GetModelByExpress(expression);
+                    var tempEnt = await _departmentService.GetModelByExpression(expression);
                     if (tempEnt != null)
                     {
                         result.Success = false;
@@ -98,11 +101,11 @@ namespace MDERP.Web.API.Controllers
                         var processResult = false;
                         if (isNew)
                         {
-                            processResult = await _departmentService.AddDepartment(tempDepartmentEnt) > 0;
+                            processResult = await _departmentService.Add(tempDepartmentEnt) > 0;
                         }
                         else
                         {
-                            processResult = await _departmentService.UpdateDepartment(tempDepartmentEnt);
+                            processResult = await _departmentService.Update(tempDepartmentEnt);
                         }
                         if (processResult)
                         {
@@ -141,10 +144,27 @@ namespace MDERP.Web.API.Controllers
                 }
                 else
                 {
-                    //TODO 判断该部门下是否还存在人员
-
-                    result.Success = true;
-                    result.Msg = "删除成功";
+                    var deptEmpRelExpression = Extention.True<Sys_EmployeeDepartmentRel>();
+                    deptEmpRelExpression = deptEmpRelExpression.And(x => x.D_DeptId == departmentid);
+                    var relList = _employeeDepartmentRelService.QueryableByExpression(deptEmpRelExpression).Result;
+                    if (relList != null)
+                    {
+                        result.Success = false;
+                        result.Msg = "该部门下存在人员无法删除！";
+                        return new JsonResult(result);
+                    }
+                    Sys_Department deptModel = _departmentService.GetModelById(departmentid).Result;
+                    bool isflag = await _departmentService.Delete(deptModel);
+                    if (isflag)
+                    {
+                        result.Success = true;
+                        result.Msg = "删除成功";
+                    }
+                    else
+                    {
+                        result.Success = false;
+                        result.Msg = "删除失败";
+                    }
                 }
             }
             catch (Exception ex)
@@ -173,7 +193,6 @@ namespace MDERP.Web.API.Controllers
                 {
                     PageModel<Sys_DepartmentVM> pageModel = JsonConvert.DeserializeObject<PageModel<Sys_DepartmentVM>>(jsonText.ToString()!)!;
                     var expression = Extention.True<Sys_Department>();
-                    List<Sys_DepartmentVM> list = new List<Sys_DepartmentVM>();
                     if (!string.IsNullOrEmpty(pageModel.QueryCriteria.D_DeptName) && !string.IsNullOrWhiteSpace(pageModel.QueryCriteria.D_DeptName))
                     {
                         expression = expression.And(x => x.D_DeptName.Contains(pageModel.QueryCriteria.D_DeptName));
